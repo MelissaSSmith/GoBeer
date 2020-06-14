@@ -24,4 +24,10 @@ var routes = Routes{
 		"/hydrometer-adjustment",
 		CalculateHydrometerAdjustment,
 	},
+	Route{
+		"srm",
+		"POST",
+		"/srm",
+		CalculateSrm,
+	},
 }

@@ -1,3 +1,53 @@
+# curl --location --request POST 'localhost:8080/srm'
+#--header 'Content-Type: application/json'
+#--data-raw '{
+#	"GrainBill": [
+#		{
+#			"Name": "Special Roast",
+#			"Amount": 1.5
+#		},
+#		{
+#			"Name": "Caramel / Crystal 40L",
+#			"Amount": 3.4
+#		},
+#		{
+#			"Name": "Rye",
+#			"Amount": 2.1
+#		},
+#		{
+#			"Name": "American 2-Row",
+#			"Amount": 6.3
+#		}
+#	],
+#	"BatchSize": 7.0
+#}'
+POST localhost:8080/srm
+Content-Type: application/json
+
+{
+	"GrainBill": [
+		{
+			"Name": "Special Roast",
+			"Amount": 1.5
+		},
+		{
+			"Name": "Caramel / Crystal 40L",
+			"Amount": 3.4
+		},
+		{
+			"Name": "Rye",
+			"Amount": 2.1
+		},
+		{
+			"Name": "American 2-Row",
+			"Amount": 6.3
+		}
+	],
+	"BatchSize": 7.0
+}
+
+###
+
 # curl --location --request POST 'localhost:8080/hydrometer-adjustment'
 #--header 'Content-Type: application/json'
 #--data-raw '{
