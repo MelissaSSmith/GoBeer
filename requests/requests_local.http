@@ -1,3 +1,18 @@
+# curl --location --request GET 'localhost:8080/fermentables/id/299'
+GET localhost:8080/fermentables/id/299
+
+###
+
+# curl --location --request GET 'localhost:8080/fermentables/rye'
+GET localhost:8080/fermentables/rye
+
+###
+
+# curl --location --request GET 'localhost:8080/fermentables'
+GET localhost:8080/fermentables
+
+###
+
 # curl --location --request POST 'localhost:8080/srm'
 #--header 'Content-Type: application/json'
 #--data-raw '{

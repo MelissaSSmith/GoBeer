@@ -30,4 +30,22 @@ var routes = Routes{
 		"/srm",
 		CalculateSrm,
 	},
+	Route{
+		"fermentables",
+		"GET",
+		"/fermentables",
+		GetAllFermentables,
+	},
+	Route{
+		"fermentable_name",
+		"GET",
+		"/fermentables/{name}",
+		GetFermentableByName,
+	},
+	Route{
+		"fermentable_id",
+		"GET",
+		"/fermentables/id/{id}",
+		GetFermentableById,
+	},
 }

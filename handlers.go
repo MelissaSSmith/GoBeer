@@ -5,6 +5,9 @@ import (
 	"io"
 	"io/ioutil"
 	"net/http"
+	"strconv"
+
+	"github.com/gorilla/mux"
 )
 
 func CalculateAbv(w http.ResponseWriter, r *http.Request) {
@@ -78,6 +81,63 @@ func CalculateSrm(w http.ResponseWriter, r *http.Request)  {
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)
 	if err := json.NewEncoder(w).Encode(response); err != nil {
+		panic(err)
+	}
+}
+
+func GetAllFermentables(w http.ResponseWriter, _ *http.Request) {
+	response := allFermentables()
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.WriteHeader(http.StatusOK)
+	if err := json.NewEncoder(w).Encode(response); err != nil {
+		panic(err)
+	}
+}
+
+func GetFermentableByName(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	name := vars["name"]
+
+	fermentable := getFermentableByName(name)
+
+	if fermentable.Id != 0 {
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(http.StatusOK)
+		if err := json.NewEncoder(w).Encode(fermentable); err != nil {
+			panic(err)
+		}
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.WriteHeader(http.StatusNotFound)
+	if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Not Found"}); err != nil {
+		panic(err)
+	}
+}
+
+func GetFermentableById(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	var id int
+	var err error
+	if id, err = strconv.Atoi(vars["id"]); err != nil {
+		panic(err)
+	}
+
+	fermentable := getFermentableById(int32(id))
+
+	if fermentable.Id != 0 {
+		w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+		w.WriteHeader(http.StatusOK)
+		if err := json.NewEncoder(w).Encode(fermentable); err != nil {
+			panic(err)
+		}
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.WriteHeader(http.StatusNotFound)
+	if err := json.NewEncoder(w).Encode(jsonErr{Code: http.StatusNotFound, Text: "Not Found"}); err != nil {
 		panic(err)
 	}
 }
