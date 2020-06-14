@@ -1,0 +1,34 @@
+# curl --location --request POST 'localhost:8080/hydrometer-adjustment'
+#--header 'Content-Type: application/json'
+#--data-raw '{
+#	"MeasuredGravity": 1.056,
+#	"TemperatureReading": 54,
+#	"CalibrationTemp": 68
+#}'
+POST localhost:8080/hydrometer-adjustment
+Content-Type: application/json
+
+{
+	"MeasuredGravity": 1.056,
+	"TemperatureReading": 54,
+	"CalibrationTemp": 68
+}
+
+###
+
+# curl --location --request POST 'localhost:8080/abv'
+#--header 'Content-Type: application/json'
+#--data-raw '{
+#	"OriginalGravity": 1.056,
+#	"FinalGravity": 1.012
+#}'
+POST localhost:8080/abv
+Content-Type: application/json
+
+{
+	"OriginalGravity": 1.056,
+	"FinalGravity": 1.012
+}
+
+###
+
