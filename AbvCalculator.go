@@ -32,7 +32,7 @@ func calculateAbv(request AbvRequest) AbvResponse {
 	alternateAbv := calculateAlternateAbv(request.OriginalGravity, request.FinalGravity)
 	totalCalories := calculateTotalCalories(request.OriginalGravity, request.FinalGravity)
 
-	return AbvResponse{
+	return AbvResponse {
 		StandardAbv:   standardAbv,
 		AlternateAbv:  alternateAbv,
 		TotalCalories: totalCalories,

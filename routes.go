@@ -18,4 +18,10 @@ var routes = Routes{
 		"/abv",
 		CalculateAbv,
 	},
+	Route{
+		"hydrometer-adjustment",
+		"POST",
+		"/hydrometer-adjustment",
+		CalculateHydrometerAdjustment,
+	},
 }
