@@ -1,9 +1,6 @@
 package main
 
-import (
-	"fmt"
-	"strings"
-)
+import "strings"
 
 type Fermentable struct {
 	Id int32 `json:"id"`
@@ -22,19 +19,15 @@ func allFermentables() []Fermentable {
 }
 
 func getFermentableByName(name string) Fermentable {
-	fermentables := allFermentables()
-
-	for _, f := range fermentables {
-		if strings.ToLower(f.Name) == strings.ToLower(name) {
-			return f
-		}
+	fermentables := retrieveFermentablesNameKey()
+	if fermentable, found := fermentables[strings.ToLower(name)]; found {
+		return fermentable
 	}
 	return Fermentable{Id: 0}
 }
 
 func getFermentableById(id int32) Fermentable {
 	fermentables := allFermentables()
-	fmt.Println("Here")
 	for _, f := range fermentables {
 		if f.Id == id {
 			return f

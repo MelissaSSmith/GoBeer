@@ -2,7 +2,7 @@ package main
 
 import (
 	"math"
-	"sort"
+	"strings"
 )
 
 type SrmRequest struct {
@@ -26,11 +26,11 @@ type SrmHex struct {
 	HexValue string `json:"hexValue"`
 }
 
-func grainColorList(fermentables []Fermentable, recipeGrains []RecipeGrain) []float32 {
+func grainColorList(fermentables map[string]Fermentable, recipeGrains []RecipeGrain) []float32 {
 	var grainColors []float32
 	for _, r := range recipeGrains {
-		sort.SliceStable(fermentables, func(i, _ int) bool { return fermentables[i].Name == r.Name })
-		grainColors = append(grainColors, fermentables[0].DegreesLovibond)
+		fermentable := fermentables[strings.ToLower(r.Name)]
+		grainColors = append(grainColors, fermentable.DegreesLovibond)
 	}
 	return grainColors
 }
@@ -54,13 +54,15 @@ func ebcColor(srm float32) float32 {
 func srmHexValue(srm float32) string {
 	hexKey := int(srm)
 	hexValues := retrieveSrmHexValues()
-	sort.SliceStable(hexValues, func(i, _ int) bool { return hexValues[i].SrmKey == hexKey })
+	if srmHex, found := hexValues[hexKey]; found {
+		return srmHex.HexValue
+	}
 
-	return hexValues[0].HexValue
+	return ""
 }
 
 func calculateSrm(request SrmRequest) SrmResponse {
-	fermentables := retrieveFermentables()
+	fermentables := retrieveFermentablesNameKey()
 
 	var grainAmounts []float32
 	for _, r := range request.GrainBill {
