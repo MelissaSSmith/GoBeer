@@ -31,6 +31,12 @@ var routes = Routes{
 		CalculateSrm,
 	},
 	Route{
+		"ibu",
+		"POST",
+		"/ibu",
+		CalculateTotalIbu,
+	},
+	Route{
 		"fermentables",
 		"GET",
 		"/fermentables",

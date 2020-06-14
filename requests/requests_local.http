@@ -1,3 +1,53 @@
+# curl --location --request POST 'localhost:8080/ibu'
+#--header 'Content-Type: application/json'
+#--data-raw '{
+#	"TargetOriginalGravity": 1.063,
+#	"BoilSize": 7.5,
+#	"BatchSize": 6.0,
+#	"Hops": [
+#		{
+#			"Name": "Centennial",
+#			"Ounces": 2.5,
+#			"AlphaAcids": 6.2,
+#			"BoilTime": 45,
+#			"Type": "Pellets"
+#		},
+#		{
+#			"Name": "Cascade",
+#			"Ounces": 4,
+#			"AlphaAcids": 5.3,
+#			"BoilTime": 15,
+#			"Type": "Pellets"
+#		}
+#	]
+#}'
+POST localhost:8080/ibu
+Content-Type: application/json
+
+{
+	"TargetOriginalGravity": 1.063,
+	"BoilSize": 7.5,
+	"BatchSize": 6.0,
+	"Hops": [
+		{
+			"Name": "Centennial",
+			"Ounces": 2.5,
+			"AlphaAcids": 6.2,
+			"BoilTime": 45,
+			"Type": "Pellets"
+		},
+		{
+			"Name": "Cascade",
+			"Ounces": 4,
+			"AlphaAcids": 5.3,
+			"BoilTime": 15,
+			"Type": "Pellets"
+		}
+	]
+}
+
+###
+
 # curl --location --request GET 'localhost:8080/fermentables/id/299'
 GET localhost:8080/fermentables/id/299
 
