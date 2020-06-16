@@ -19,7 +19,7 @@ var routes = Routes{
 		CalculateAbv,
 	},
 	Route{
-		"hydrometer-adjustment",
+		"hydrometer_adjustment",
 		"POST",
 		"/hydrometer-adjustment",
 		CalculateHydrometerAdjustment,
@@ -35,6 +35,12 @@ var routes = Routes{
 		"POST",
 		"/ibu",
 		CalculateTotalIbu,
+	},
+	Route{
+		Name:        "dilution_boil_off",
+		Method:      "POST",
+		Pattern:     "/dilution-boil-off",
+		HandlerFunc: CalculateDilutionBoilOff,
 	},
 	Route{
 		"fermentables",
