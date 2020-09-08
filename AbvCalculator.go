@@ -2,14 +2,14 @@ package main
 
 
 type AbvRequest struct {
-	OriginalGravity	float64	`json:"originalGravity"`
-	FinalGravity float64 `json:"finalGravity"`
+	OriginalGravity	float64	`json:"original_gravity"`
+	FinalGravity float64 `json:"final_gravity"`
 }
 
 type AbvResponse struct {
-	StandardAbv float64 `json:"standardAbv"`
-	AlternateAbv float64 `json:"alternateAbv"`
-	TotalCalories float64 `json:"totalCalories"`
+	StandardAbv float64 `json:"standard_abv"`
+	AlternateAbv float64 `json:"alternate_abv"`
+	TotalCalories float64 `json:"total_calories"`
 }
 
 func calculateStandardAbv(originalGravity float64, finalGravity float64) float64 {

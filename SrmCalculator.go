@@ -6,14 +6,14 @@ import (
 )
 
 type SrmRequest struct {
-	GrainBill []RecipeGrain `json:"grainBill"`
-	BatchSize float64 `json:"batchSize"`
+	GrainBill []RecipeGrain `json:"grain_bill"`
+	BatchSize float64 `json:"batch_size"`
 }
 
 type SrmResponse struct {
 	Srm float64 `json:"srm"`
 	Ebc float64 `json:"ebc"`
-	HexColor string `json:"hexColor"`
+	HexColor string `json:"hex_color"`
 }
 
 type RecipeGrain struct {
@@ -22,8 +22,8 @@ type RecipeGrain struct {
 }
 
 type SrmHex struct {
-	SrmKey int `json:"srmKey"`
-	HexValue string `json:"hexValue"`
+	SrmKey int `json:"srm_key"`
+	HexValue string `json:"hex_value"`
 }
 
 func grainColorList(fermentables map[string]Fermentable, recipeGrains []RecipeGrain) []float64 {

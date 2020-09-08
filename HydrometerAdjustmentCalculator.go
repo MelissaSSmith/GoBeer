@@ -1,13 +1,13 @@
 package main
 
 type HydrometerAdjustmentRequest struct {
-	MeasuredGravity float64 `json:"measuredGravity"`
-	TemperatureReading float64 `json:"temperatureReading"`
-	CalibrationTemp float64 `json:"calibrationTemp"`
+	MeasuredGravity float64 `json:"measured_gravity"`
+	TemperatureReading float64 `json:"temperature_reading"`
+	CalibrationTemp float64 `json:"calibration_temp"`
 }
 
 type HydrometerAdjustmentResponse struct {
-	CorrectedGravity float64 `json:"correctedGravity"`
+	CorrectedGravity float64 `json:"corrected_gravity"`
 }
 
 func tempAdjustment(temp float64) float64 {

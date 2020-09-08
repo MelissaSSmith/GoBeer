@@ -6,23 +6,23 @@ import (
 )
 
 type IbuRequest struct {
-	TargetOriginalGravity float64 `json:"targetOriginalGravity"`
-	BoilSize float64 `json:"boilSize"`
-	BatchSize float64 `json:"batchSize"`
+	TargetOriginalGravity float64 `json:"target_original_gravity"`
+	BoilSize float64 `json:"boil_size"`
+	BatchSize float64 `json:"batch_size"`
 	Hops []RecipeHop `json:"hops"`
 }
 
 type IbuResponse struct {
-	EstimatedBoilGravity float64 `json:"estimatedBoilGravity"`
-	TotalIbu float64 `json:"totalIbu"`
-	HopIbus []HopIbu `json:"hopIbus"`
+	EstimatedBoilGravity float64 `json:"estimated_boil_gravity"`
+	TotalIbu float64 `json:"total_ibu"`
+	HopIbus []HopIbu `json:"hop_ibus"`
 }
 
 type RecipeHop struct {
 	Name string `json:"name"`
 	Ounces float64 `json:"ounces"`
-	AlphaAcids float64 `json:"alphaAcids"`
-	BoilTime float64 `json:"boilTime"`
+	AlphaAcids float64 `json:"alpha_acids"`
+	BoilTime float64 `json:"boil_time"`
 	Type string `json:"type"`
 }
 
