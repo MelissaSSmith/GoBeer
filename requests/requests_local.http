@@ -1,9 +1,9 @@
 # curl --location --request POST 'localhost:8080/ibu'
 #--header 'Content-Type: application/json'
 #--data-raw '{
-#	"TargetOriginalGravity": 1.063,
-#	"BoilSize": 7.5,
-#	"BatchSize": 6.0,
+#	"Target_original_gravity": 1.063,
+#	"Boil_size": 7.5,
+#	"Batch_size": 6.0,
 #	"Hops": [
 #		{
 #			"Name": "Centennial",
@@ -25,9 +25,9 @@ POST localhost:8080/ibu
 Content-Type: application/json
 
 {
-	"TargetOriginalGravity": 1.063,
-	"BoilSize": 7.5,
-	"BatchSize": 6.0,
+	"Target_original_gravity": 1.063,
+	"Boil_size": 7.5,
+	"Batch_size": 6.0,
 	"Hops": [
 		{
 			"Name": "Centennial",
@@ -66,7 +66,7 @@ GET localhost:8080/fermentables
 # curl --location --request POST 'localhost:8080/srm'
 #--header 'Content-Type: application/json'
 #--data-raw '{
-#	"GrainBill": [
+#	"Grain_bill": [
 #		{
 #			"Name": "Special Roast",
 #			"Amount": 1.5
@@ -84,13 +84,13 @@ GET localhost:8080/fermentables
 #			"Amount": 6.3
 #		}
 #	],
-#	"BatchSize": 7.0
+#	"Batch_size": 7.0
 #}'
 POST localhost:8080/srm
 Content-Type: application/json
 
 {
-	"GrainBill": [
+	"Grain_bill": [
 		{
 			"Name": "Special Roast",
 			"Amount": 1.5
@@ -108,7 +108,7 @@ Content-Type: application/json
 			"Amount": 6.3
 		}
 	],
-	"BatchSize": 7.0
+	"Batch_size": 7.0
 }
 
 ###
@@ -116,17 +116,17 @@ Content-Type: application/json
 # curl --location --request POST 'localhost:8080/hydrometer-adjustment'
 #--header 'Content-Type: application/json'
 #--data-raw '{
-#	"MeasuredGravity": 1.056,
-#	"TemperatureReading": 54,
-#	"CalibrationTemp": 68
+#	"Measured_gravity": 1.056,
+#	"Temperature_reading": 54,
+#	"Calibration_temp": 68
 #}'
 POST localhost:8080/hydrometer-adjustment
 Content-Type: application/json
 
 {
-	"MeasuredGravity": 1.056,
-	"TemperatureReading": 54,
-	"CalibrationTemp": 68
+	"Measured_gravity": 1.056,
+	"Temperature_reading": 54,
+	"Calibration_temp": 68
 }
 
 ###
@@ -134,15 +134,15 @@ Content-Type: application/json
 # curl --location --request POST 'localhost:8080/abv'
 #--header 'Content-Type: application/json'
 #--data-raw '{
-#	"OriginalGravity": 1.056,
-#	"FinalGravity": 1.012
+#	"Original_gravity": 1.056,
+#	"Final_gravity": 1.012
 #}'
 POST localhost:8080/abv
 Content-Type: application/json
 
 {
-	"OriginalGravity": 1.056,
-	"FinalGravity": 1.012
+	"Original_gravity": 1.056,
+	"Final_gravity": 1.012
 }
 
 ###
