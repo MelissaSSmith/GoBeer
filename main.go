@@ -1,13 +1,12 @@
 package main
 
 import (
-	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 )
 
 func main() {
-	router := mux.NewRouter()
+	router := NewRouter()
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

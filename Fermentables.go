@@ -8,7 +8,7 @@ type Fermentable struct {
 	Country string `json:"country"`
 	Category string `json:"category"`
 	Type string `json:"type"`
-	DegreesLovibond float64 `json:"degreesLovibond"`
+	DegreesLovibond float64 `json:"degrees_lovibond"`
 	PPG float64 `json:"ppg"`
 }
 

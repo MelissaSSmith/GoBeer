@@ -8,6 +8,7 @@ import (
 )
 
 var fermentableFile = "./data/fermentables.json"
+var hopFile = "./data/hops.json"
 var srmHexFile = "./data/srm_hex.json"
 
 func retrieveFermentables() []Fermentable {
@@ -33,6 +34,31 @@ func retrieveFermentablesNameKey() map[string]Fermentable {
 		fermentableMap[strings.ToLower(f.Name)] = f
 	}
 	return fermentableMap
+}
+
+func retrieveHops() []Hop {
+	data, err := ioutil.ReadFile(hopFile)
+	if err != nil {
+		fmt.Print(err)
+	}
+	var obj []Hop
+
+	err = json.Unmarshal(data, &obj)
+	if err != nil {
+		fmt.Print("error:", err)
+	}
+
+	return obj
+}
+
+func retrieveHopsIdKey() map[string]Hop {
+	hops := retrieveHops()
+	hopMap := make(map[string]Hop)
+
+	for _, h := range hops {
+		hopMap[strings.ToLower(h.HopId)] = h
+	}
+	return hopMap
 }
 
 func retrieveSrmHexValues() map[int]SrmHex {

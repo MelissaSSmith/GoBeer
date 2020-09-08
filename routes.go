@@ -60,4 +60,16 @@ var routes = Routes{
 		"/fermentables/id/{id}",
 		GetFermentableById,
 	},
+	Route{
+		"hops",
+		"GET",
+		"/hops",
+		GetAllHops,
+	},
+	Route{
+		"hop_id",
+		"GET",
+		"/hops/{hopId}",
+		GetHopByName,
+	},
 }

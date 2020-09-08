@@ -147,3 +147,10 @@ Content-Type: application/json
 
 ###
 
+# curl --location --request GET 'localhost:8080/hops/admiral'
+GET localhost:8080/hops/admiral
+
+###
+
+# curl --location --request GET 'localhost:8080/admiral'
+GET localhost:8080/hops
