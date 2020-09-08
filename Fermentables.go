@@ -8,8 +8,8 @@ type Fermentable struct {
 	Country string `json:"country"`
 	Category string `json:"category"`
 	Type string `json:"type"`
-	DegreesLovibond float32 `json:"degreesLovibond"`
-	PPG float32 `json:"ppg"`
+	DegreesLovibond float64 `json:"degreesLovibond"`
+	PPG float64 `json:"ppg"`
 }
 
 func allFermentables() []Fermentable {

@@ -7,18 +7,18 @@ import (
 
 type SrmRequest struct {
 	GrainBill []RecipeGrain `json:"grainBill"`
-	BatchSize float32 `json:"batchSize"`
+	BatchSize float64 `json:"batchSize"`
 }
 
 type SrmResponse struct {
-	Srm float32 `json:"srm"`
-	Ebc float32 `json:"ebc"`
+	Srm float64 `json:"srm"`
+	Ebc float64 `json:"ebc"`
 	HexColor string `json:"hexColor"`
 }
 
 type RecipeGrain struct {
 	Name string `json:"name"`
-	Amount float32 `json:"amount"`
+	Amount float64 `json:"amount"`
 }
 
 type SrmHex struct {
@@ -26,8 +26,8 @@ type SrmHex struct {
 	HexValue string `json:"hexValue"`
 }
 
-func grainColorList(fermentables map[string]Fermentable, recipeGrains []RecipeGrain) []float32 {
-	var grainColors []float32
+func grainColorList(fermentables map[string]Fermentable, recipeGrains []RecipeGrain) []float64 {
+	var grainColors []float64
 	for _, r := range recipeGrains {
 		fermentable := fermentables[strings.ToLower(r.Name)]
 		grainColors = append(grainColors, fermentable.DegreesLovibond)
@@ -35,23 +35,23 @@ func grainColorList(fermentables map[string]Fermentable, recipeGrains []RecipeGr
 	return grainColors
 }
 
-func mcu(grainColor float32, amountLbs float32, batchSize float32) float32 {
+func mcu(grainColor float64, amountLbs float64, batchSize float64) float64 {
 	return (grainColor * amountLbs) / batchSize
 }
 
-func srmColor(grainColors []float32, grainAmounts []float32, batchSize float32) float32 {
-	var totalMcu float32
+func srmColor(grainColors []float64, grainAmounts []float64, batchSize float64) float64 {
+	var totalMcu float64
 	for i, c := range grainColors {
 		totalMcu += mcu(c, grainAmounts[i], batchSize)
 	}
-	return float32(math.Pow(float64(totalMcu), 0.6859) * 1.4922)
+	return math.Pow(totalMcu, 0.6859) * 1.4922
 }
 
-func ebcColor(srm float32) float32 {
+func ebcColor(srm float64) float64 {
 	return srm * 1.97
 }
 
-func srmHexValue(srm float32) string {
+func srmHexValue(srm float64) string {
 	hexKey := int(srm)
 	hexValues := retrieveSrmHexValues()
 	if srmHex, found := hexValues[hexKey]; found {
@@ -64,7 +64,7 @@ func srmHexValue(srm float32) string {
 func calculateSrm(request SrmRequest) SrmResponse {
 	fermentables := retrieveFermentablesNameKey()
 
-	var grainAmounts []float32
+	var grainAmounts []float64
 	for _, r := range request.GrainBill {
 		grainAmounts = append(grainAmounts, r.Amount)
 	}
